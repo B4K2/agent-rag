@@ -12,7 +12,7 @@ CHROMA_DB_PATH = "./chroma_db_standard"
 COLLECTION_NAME = "my_documents_collection_standard"
 EMBEDDER_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 # Use the latest available flash model compatible with ADK
-AGENT_MODEL_NAME = "gemini-1.5-flash"
+AGENT_MODEL_NAME = "gemini-2.0-flash"
 # How many chunks to retrieve? Adjust based on context window needs and relevance
 N_RETRIEVAL_RESULTS = 5
 
@@ -92,16 +92,7 @@ print("Defining the RAG Agent...")
 
 # Clear instructions are crucial for RAG agents
 agent_instructions = f"""
-You are a helpful assistant that answers user questions based on the information provided in the retrieved document chunks.
-
-Your Task:
-1.  Analyze the user's query.
-2.  If the query requires searching the knowledge base, use the tool named 'retrieve_document_chunks_tool' to find relevant text chunks. <<< Make sure the tool name matches the Python function name
-3.  Examine the dictionary returned by the 'retrieve_document_chunks_tool':
-    - Look for the 'status' key. If status is 'success' and the 'retrieved_chunks' list is not empty: Carefully review the text in 'retrieved_chunks'. Synthesize an answer to the user's query *using only the information present in these chunks*. Do NOT add any information not found in the chunks.
-    - If status is 'no_results' or 'error', or if the 'retrieved_chunks' list is empty: State clearly that you cannot answer the question based on the available documents.
-4.  Do NOT use your general knowledge or search the web. Your knowledge is strictly limited to the documents retrieved by the tool.
-5.  If the user query is not a question seeking information from the documents (e.g., a greeting, unrelated task), state that you are designed to answer questions based on the specific document set and cannot fulfill the request.
+you work is just to greet with the user and interact with the user and use 'retrieve_document_chunks_tool' rag function to reterive information. 
 """
 
 # Create the Agent instance

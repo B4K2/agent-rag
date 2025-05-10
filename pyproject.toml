@@ -14,5 +14,7 @@ dependencies = [
     "marker-pdf>=1.6.2",
     "pillow>=10.4.0",
     "python-dotenv>=1.1.0",
+    "python-multipart>=0.0.20",
     "streamlit>=1.45.0",
+    "uvicorn>=0.34.2",
 ]
